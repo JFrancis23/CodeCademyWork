@@ -6,3 +6,5 @@ const sign = [];
 const action = [];
 
 let fortune = [];
+
+// New stuff
