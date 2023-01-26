@@ -1,6 +1,8 @@
 // Random Message Generator
 // Afternoon tea planner
 
+
+// Array of partial sentence constructors
 const preposal = [
     "Would you like",
     "How do you fancy",
@@ -12,7 +14,6 @@ const preposal = [
     "Would you enjoy",
     "I like the sound of",
     "I think you would like",
-
 ];
 const tea = [
     "English breakfast tea",
@@ -25,13 +26,12 @@ const tea = [
     "afternoon tea",
     "a mug of tea",
     "a spot of tea",
-
 ];
 const location = [
     "at yours?",
     "at mine?",
     "at Starbucks?",
-    "at coffee 1?",
+    "at coffee #1?",
     "at the cafe?",
     "at home?",
     "by the river?",
@@ -39,9 +39,9 @@ const location = [
     "at Costa?",
     "in town?",
 ];
-
-function random() {
-    return (Math.floor(Math.random() * 10));
+// Function for random number between 0-.length, that takes the length of the array as an argument so that any updates to the number of choices is taken into account.
+function random(len) {
+    return (Math.floor(Math.random() * len));
 }
-
-console.log(`${preposal[random()]} ${tea[random()]} ${location[random()]}`);
+// Sentence construction with random number for each constructor.
+console.log(`${preposal[random(preposal.length)]} ${tea[random(tea.length)]} ${location[random(location.length)]}`);
