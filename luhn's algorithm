@@ -1,17 +1,20 @@
-function luhn(cardNumber){
-let arr = cardNumber.split("").map(Number);
-let total = 0;
+function luhn(cardNumber) {
+  let arr = cardNumber.split("").map(Number)
+  let total = 0
 
-for (let i = arr.length - 1; i >= 0; i--) {  //Backwards loop
-	let value = arr[i]; //To be able to manipulate value at i
+  //To be able to manipulate value at every other position
+  for (let i = arr.length - 2; i >= 0; i -= 2) {
+    let value = arr[i] * 2
+    if (value > 9) {
+      value -= 9
+    }
+    total += value
+  }
+  //To be able to manipulate positions that dont need doubling
 
-		if (i % 2 == 0) { //If position [i] is one that needs doubling...
-		value *= 2;
-			if (value > 9) {
-			value -= 9;
-			}
-		}
-	total += value; // If [i] doesn't need doubling (number just carries on, it goes straight to the +=value.)
-	}
-return(total % 10 === 0); // Returns true if valid test case
-};
+  for (let i = arr.length - 1; i >= 0; i -= 2) {
+    // If [i] doesn't need doubling (number just carries on, it goes straight to the +=value.)
+    total += arr[i]
+  }
+  return total % 10 === 0 // Returns true if valid test case
+}
